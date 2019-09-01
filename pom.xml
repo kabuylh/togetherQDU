@@ -6,11 +6,11 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.qdu</groupId>
-    <artifactId>youda</artifactId>
+    <artifactId>yiqiba</artifactId>
     <version>0.9-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>youda</name>
-    <description>youda of qdu</description>
+    <name>yiqiba</name>
+    <description>一起吧 Of QDU</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -22,6 +22,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

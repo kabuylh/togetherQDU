@@ -1,40 +1,68 @@
 package com.qdu.youda.Service;
 
-import com.qdu.youda.dao.CheckinMapper;
-import com.qdu.youda.dao.GroupMapper;
-import com.qdu.youda.dao.UserMapper;
-import com.qdu.youda.pojo.Group;
+import java.util.*;
+import com.qdu.youda.dao.*;
 import com.qdu.youda.pojo.User;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 @Service
-public final class UserService {
+public class UserService {
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
     @Autowired
-    GroupMapper groupMapper;
+    private UserGroupMappingMapper userGroupMappingMapper;
 
-    public boolean InsertUserToGroup(int uid, int gid) {
-        User user = userMapper.selectByUid(uid);
-        List<String> list = new ArrayList<>(Arrays.asList(user.getGroup_list().split(";")));
-        list.add(String.valueOf(gid));
-        user.setGroup_list(String.join(";", (String[])list.toArray(new String[0])));
-        // userMapper.update(user);
-        Group group = groupMapper.selectByGid(gid);
-        List<String> list2 = new ArrayList<>(Arrays.asList(group.getMember_list().split(";")));
-        list2.add(String.valueOf(uid));
-        int count = 0;
-        for (String i : list2) {
-            System.out.println(count++ + " : " + i);
+    final Logger logger = LogManager.getLogger();
+
+    public boolean insertUser(User user) {
+        try {
+            userMapper.insert(user);
+            return true;
+        } catch (Exception e) {
+            logger.warn("Exception", e);
+            return false;
         }
-        group.setMember_list(String.join(";", (String[])list2.toArray(new String[0])));
-        // groupMapper.update(group);
-        return true;
+    }
+
+    public boolean deleteUser(Integer uid) {
+        try {
+            userMapper.delete(uid);
+            return true;
+        } catch (Exception e) {
+            logger.warn("Exception", e);
+            return false;
+        }
+    }
+
+    public boolean updateUser(User user) {
+        try {
+            userMapper.update(user);
+            return true;
+        } catch (Exception e) {
+            logger.warn("Exception", e);
+            return false;
+        }
+    }
+
+    public User getUserByUid(Integer uid) {
+        try {
+            return userMapper.select(uid);
+        } catch (Exception e) {
+            logger.warn("Exception", e);
+            return new User();
+        }
+    }
+
+    public List<User> getAllUser() {
+        try {
+            return userMapper.selectAll();
+        } catch (Exception e) {
+            logger.warn("Exception", e);
+            return new ArrayList<>();
+        }
     }
 }

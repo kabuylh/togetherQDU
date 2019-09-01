@@ -1,28 +1,24 @@
 package com.qdu.youda.Service;
 
 import java.util.*;
-import com.qdu.youda.dao.*;
-import com.qdu.youda.pojo.Group;
+import com.qdu.youda.dao.CommentMapper;
+import com.qdu.youda.pojo.Comment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GroupService {
+public class CommentService {
 
     @Autowired
-    private GroupMapper groupMapper;
-    @Autowired
-    private UserGroupMappingMapper userGroupMappingMapper;
-    @Autowired
-    private GroupCheckinMappingMapper groupCheckinMappingMapper;
+    private CommentMapper commentMapper;
 
     final Logger logger = LogManager.getLogger();
 
-    public boolean insertGroup(Group group) {
+    public boolean insertComment(Comment comment) {
         try {
-            groupMapper.insert(group);
+            commentMapper.insert(comment);
             return true;
         } catch (Exception e) {
             logger.warn("Exception", e);
@@ -30,9 +26,9 @@ public class GroupService {
         }
     }
 
-    public boolean deleteGroup(Integer gid) {
+    public boolean deleteComment(Integer comment_id) {
         try {
-            groupMapper.delete(gid);
+            commentMapper.delete(comment_id);
             return true;
         } catch (Exception e) {
             logger.warn("Exception", e);
@@ -40,9 +36,9 @@ public class GroupService {
         }
     }
 
-    public boolean updateGroup(Group group) {
+    public boolean updateComment(Comment comment) {
         try {
-            groupMapper.update(group);
+            commentMapper.update(comment);
             return true;
         } catch (Exception e) {
             logger.warn("Exception", e);
@@ -50,18 +46,18 @@ public class GroupService {
         }
     }
 
-    public Group getGroupByGid(Integer gid) {
+    public Comment getCommentByCommentId(Integer comment_id) {
         try {
-            return groupMapper.select(gid);
+            return commentMapper.select(comment_id);
         } catch (Exception e) {
             logger.warn("Exception", e);
-            return new Group();
+            return new Comment();
         }
     }
 
-    public List<Group> getAllGroup() {
+    public List<Comment> getAllComment() {
         try {
-            return groupMapper.selectAll();
+            return commentMapper.selectAll();
         } catch (Exception e) {
             logger.warn("Exception", e);
             return new ArrayList<>();

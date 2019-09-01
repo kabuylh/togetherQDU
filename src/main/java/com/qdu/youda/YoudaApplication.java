@@ -9,5 +9,4 @@ public class YoudaApplication {
     public static void main(String[] args) {
         SpringApplication.run(YoudaApplication.class, args);
     }
-
 }
