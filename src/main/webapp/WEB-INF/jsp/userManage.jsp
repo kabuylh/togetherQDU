@@ -29,18 +29,18 @@
 <hr />
 <form id="update">
     <h3>修改用户</h3>
-    <input id="uid" onchange="query()">：用户编号（uid）<br />
-    <input name="name" disabled>：昵称（name）<br />
-    <input name="sign" disabled>：个签（sign）<br />
-    <select name="sex" disabled>
+    <input id="uid" onblur="query()">：用户编号（uid）- 填写以填充下列信息<br />
+    <input id="name" name="name">：昵称（name）<br />
+    <input id="sign" name="sign">：个签（sign）<br />
+    <select id="sex" name="sex">
         <option value="" selected></option>
         <option value="1">男</option>
         <option value="0">女</option>
     </select>：性别（sex）<br />
-    <input name="region" disabled>：地区（region）<br />
-    <input name="phone" disabled>：手机（phone）<br />
-    <input name="wechat" disabled>：微信（wechat）<br />
-    <input name="qq" disabled>：QQ（qq）<br />
+    <input id="region" name="region">：地区（region）<br />
+    <input id="phone" name="phone">：手机（phone）<br />
+    <input id="wechat" name="wechat">：微信（wechat）<br />
+    <input id="qq" name="qq">：QQ（qq）<br />
 </form>
 <button id="updateBtn" onclick="update()">修改</button>
 <script>
@@ -93,7 +93,13 @@
         $.get("/manage/user/query", {
                 "uid" : $("#uid").val()
             }, function(response) {
-                alert("click query");
+                $("#name").val(response["name"]);
+                $("#sign").val(response["sign"]);
+                $("#sex").val(response["sex"]);
+                $("#region").val(response["region"]);
+                $("#phone").val(response["phone"]);
+                $("#wechat").val(response["wechat"]);
+                $("#qq").val(response["qq"]);
         })
     }
 </script>

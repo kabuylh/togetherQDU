@@ -9,16 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GroupService {
-
-    @Autowired
-    private GroupMapper groupMapper;
-    @Autowired
-    private UserGroupMappingMapper userGroupMappingMapper;
-    @Autowired
-    private GroupCheckinMappingMapper groupCheckinMappingMapper;
-
-    final Logger logger = LogManager.getLogger();
+public class GroupService extends CommonService {
 
     public boolean insertGroup(Group group) {
         try {

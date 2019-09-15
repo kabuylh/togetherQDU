@@ -9,14 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
-
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private UserGroupMappingMapper userGroupMappingMapper;
-
-    final Logger logger = LogManager.getLogger();
+public class UserService extends CommonService {
 
     public boolean insertUser(User user) {
         try {

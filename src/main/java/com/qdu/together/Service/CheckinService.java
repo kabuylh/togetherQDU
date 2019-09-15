@@ -9,14 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CheckinService {
-
-    @Autowired
-    private CheckinMapper checkinMapper;
-    @Autowired
-    private GroupCheckinMappingMapper groupCheckinMappingMapper;
-
-    final Logger logger = LogManager.getLogger();
+public class CheckinService extends CommonService {
 
     public boolean insertCheckin(Checkin checkin) {
         try {

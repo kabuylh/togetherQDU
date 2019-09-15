@@ -9,12 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommentService {
-
-    @Autowired
-    private CommentMapper commentMapper;
-
-    final Logger logger = LogManager.getLogger();
+public class CommentService extends CommonService {
 
     public boolean insertComment(Comment comment) {
         try {
