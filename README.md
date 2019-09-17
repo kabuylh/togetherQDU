@@ -1,6 +1,6 @@
 # 高校一起吧
 
-together of QDU
+together of QDU.
 
 ## 后台管理页面
 
