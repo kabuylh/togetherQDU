@@ -9,4 +9,5 @@ public class TogetherApplication {
     public static void main(String[] args) {
         SpringApplication.run(TogetherApplication.class, args);
     }
+
 }

@@ -1,14 +1,20 @@
 package com.qdu.together.controller;
 
-import com.qdu.together.Service.*;
+import com.qdu.together.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class CommonController {
 
     @Autowired
-    UserService userService;
+    public CheckinMapper checkinMapper;
     @Autowired
-    GroupService groupService;
+    public CommentMapper commentMapper;
     @Autowired
-    CheckinService checkinService;
+    public GroupCheckinMappingMapper groupCheckinMappingMapper;
+    @Autowired
+    public GroupMapper groupMapper;
+    @Autowired
+    public UserGroupMappingMapper userGroupMappingMapper;
+    @Autowired
+    public UserMapper userMapper;
 }
